@@ -1,0 +1,106 @@
+package com.bioid.authenticator.base.network.bioid.webservice;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
+import android.util.ArrayMap;
+
+import com.bioid.authenticator.base.logging.LoggingHelper;
+import com.bioid.authenticator.base.network.HttpRequest;
+import com.bioid.authenticator.base.network.HttpRequestHelper;
+import com.bioid.authenticator.base.network.NoConnectionException;
+import com.bioid.authenticator.base.network.ServerErrorException;
+import com.bioid.authenticator.base.network.TechnicalException;
+import com.bioid.authenticator.base.network.bioid.webservice.token.BwsTokenFactory;
+import com.bioid.authenticator.base.network.bioid.webservice.token.EnrollmentToken;
+import com.bioid.authenticator.base.network.bioid.webservice.token.VerificationToken;
+import com.example.flutter_app_bioid_integration.BuildConfig;
+
+import java.util.Map;
+
+/**
+ * Extended {@link BioIdWebserviceClient} which offers more functionality needed in the BWS flavor.
+ */
+public class BioIdWebserviceClientExtended extends BioIdWebserviceClient {
+
+    private static final String CONTENT_TYPE_TEXT = "text/plain";
+
+    @VisibleForTesting
+    static final String VERIFICATION_TASK = "verify";
+    @VisibleForTesting
+    static final String ENROLLMENT_TASK = "enroll";
+
+    private final BwsTokenFactory tokenFactory;
+
+    /**
+     * Creates a new instance of the BioIdWebserviceClientExtended.
+     */
+    public BioIdWebserviceClientExtended() {
+        this.tokenFactory = new BwsTokenFactory();
+    }
+
+    @VisibleForTesting
+    BioIdWebserviceClientExtended(HttpRequestHelper httpRequestHelper, LoggingHelper log, Encoder encoder,
+                                  BwsTokenFactory tokenFactory) {
+        super(httpRequestHelper, log, encoder);
+        this.tokenFactory = tokenFactory;
+    }
+
+    /**
+     * Requests a new verification token from BWS.
+     * The token can be used to perform a user verification.
+     *
+     * @param bcid Biometric Class ID (BCID) of the user for whom the token shall be issued.
+     * @return token for biometric verification
+     * @throws NoConnectionException if no connection could be established
+     * @throws ServerErrorException  if the server failed to process the request
+     * @throws TechnicalException    if any other technical error occurred
+     */
+    @NonNull
+    public VerificationToken requestVerificationToken(@NonNull String bcid) {
+        try {
+            HttpRequest request = createNewTokenRequest(bcid, VERIFICATION_TASK);
+            String responseBody = httpRequestHelper.asTextIfOk(request);
+            return tokenFactory.newVerificationToken(responseBody);
+        } catch (HttpRequestHelper.Non200StatusException e) {
+            throw new TechnicalException(e);
+        }
+    }
+
+    /**
+     * Requests a new enrollment token from BWS.
+     * The token can be used to perform a user enrollment.
+     *
+     * @param bcid Biometric Class ID (BCID) of the user for whom the token shall be issued.
+     * @return token for biometric enrollment
+     * @throws NoConnectionException if no connection could be established
+     * @throws ServerErrorException  if the server failed to process the request
+     * @throws TechnicalException    if any other technical error occurred
+     */
+    @NonNull
+    public EnrollmentToken requestEnrollmentToken(@NonNull String bcid) {
+        try {
+            HttpRequest request = createNewTokenRequest(bcid, ENROLLMENT_TASK);
+            String responseBody = httpRequestHelper.asTextIfOk(request);
+            return tokenFactory.newEnrollmentToken(responseBody);
+        } catch (HttpRequestHelper.Non200StatusException e) {
+            throw new TechnicalException(e);
+        }
+    }
+
+    @VisibleForTesting
+    protected HttpRequest createNewTokenRequest(@NonNull String bcid, @NonNull String task) {
+        try {
+            Map<String, String> queryParameters = new ArrayMap<>(3);
+            queryParameters.put("id", BuildConfig.BIOID_APP_ID);
+            queryParameters.put("bcid", bcid);
+            queryParameters.put("task", task);
+
+            return withDefaultTimeout(
+                    HttpRequest.get(BWS_BASE_URL + "/extension/token", queryParameters, true)
+                            .basic(BuildConfig.BIOID_APP_ID, BuildConfig.BIOID_APP_SECRET)
+                            .accept(CONTENT_TYPE_TEXT));
+        } catch (HttpRequest.HttpRequestException e) {
+            throw new NoConnectionException(e);
+        }
+    }
+}
