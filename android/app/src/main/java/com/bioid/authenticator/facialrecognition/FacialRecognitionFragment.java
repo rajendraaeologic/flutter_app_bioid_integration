@@ -29,6 +29,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bioid.authenticator.R;
 import com.bioid.authenticator.base.annotations.ConfigurationOrientation;
 import com.bioid.authenticator.base.annotations.SurfaceRotation;
 import com.bioid.authenticator.base.camera.CameraException;
@@ -42,10 +43,9 @@ import com.bioid.authenticator.base.network.bioid.webservice.token.EnrollmentTok
 import com.bioid.authenticator.base.network.bioid.webservice.token.VerificationTokenProvider;
 import com.bioid.authenticator.base.notification.DialogHelper;
 import com.bioid.authenticator.base.opengl.HeadOverlayView.Direction;
+import com.bioid.authenticator.databinding.FragmentFacialRecognitionBinding;
 import com.bioid.authenticator.facialrecognition.enrollment.EnrollmentPresenter;
 import com.bioid.authenticator.facialrecognition.verification.VerificationPresenter;
-import com.example.flutter_app_bioid_integration.R;
-import com.example.flutter_app_bioid_integration.databinding.FragmentFacialRecognitionBinding;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;

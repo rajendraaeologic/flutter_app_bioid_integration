@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.flutter_app_bioid_integration.R;
+import com.bioid.authenticator.R;
 
 
 /**

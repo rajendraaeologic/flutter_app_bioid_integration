@@ -38,7 +38,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_app_bioid_integration"
+        applicationId "com.bioid.authenticator"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
@@ -68,6 +68,10 @@ android {
             buildConfigField 'String', 'BIOID_APP_SECRET', BioIdAppSecret
             buildConfigField 'String', 'BIOID_BCID', BioIdBcid
         }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/java'
     }
 }
 

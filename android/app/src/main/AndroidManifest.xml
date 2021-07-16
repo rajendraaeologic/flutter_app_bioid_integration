@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_app_bioid_integration">
+    package="com.bioid.authenticator">
 
     <!-- A front-facing camera is required for the facial recognition process. -->
     <uses-feature android:name="android.hardware.camera.front"/>
@@ -15,7 +15,7 @@
         android:label="flutter_app_bioid_integration"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name=".MainActivity"
+            android:name="."
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

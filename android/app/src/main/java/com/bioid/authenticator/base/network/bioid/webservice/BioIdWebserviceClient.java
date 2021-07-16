@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import android.util.ArrayMap;
 
+import com.bioid.authenticator.BuildConfig;
 import com.bioid.authenticator.base.image.Yuv420Image;
 import com.bioid.authenticator.base.logging.LoggingHelper;
 import com.bioid.authenticator.base.logging.LoggingHelperFactory;
@@ -16,7 +17,6 @@ import com.bioid.authenticator.base.network.TechnicalException;
 import com.bioid.authenticator.base.network.bioid.webservice.token.BwsToken;
 import com.bioid.authenticator.base.network.bioid.webservice.token.EnrollmentToken;
 import com.bioid.authenticator.base.network.bioid.webservice.token.VerificationToken;
-import com.example.flutter_app_bioid_integration.BuildConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;

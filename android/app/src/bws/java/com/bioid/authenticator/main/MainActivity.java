@@ -1,5 +1,3 @@
-package com.bioid.authenticator.main;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +11,9 @@ import com.example.flutter_app_bioid_integration.BuildConfig;
 import com.example.flutter_app_bioid_integration.R;
 import com.example.flutter_app_bioid_integration.databinding.ActivityMainBinding;
 
-/**
- * Activity demonstrating how to start the verification and enrollment process.
- */
-public class MainActivity extends AppCompatActivity {
+import io.flutter.embedding.android.FlutterActivity;
+
+public class MainActivity extends FlutterActivity {
 
     private static final String TAG = "MainActivity";
     private static final int REQUEST_CODE_VERIFY = 0;
@@ -26,14 +23,14 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        //ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        setSupportActionBar(binding.toolbar);
+        //setSupportActionBar(binding.toolbar);
 
         // In a real world scenario you would determine the BCID based on the user which should be verified or enrolled.
         final BwsTokenProvider tokenProvider = new BwsTokenProvider(BuildConfig.BIOID_BCID);
 
-        binding.verificationNavButton.setOnClickListener(v -> {
+        /*binding.verificationNavButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, VerificationActivity.class);
             intent.putExtra(VerificationActivity.EXTRA_TOKEN_PROVIDER, tokenProvider);
             startActivityForResult(intent, REQUEST_CODE_VERIFY);
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, EnrollmentActivity.class);
             intent.putExtra(EnrollmentActivity.EXTRA_TOKEN_PROVIDER, tokenProvider);
             startActivityForResult(intent, REQUEST_CODE_ENROLL);
-        });
+        });*/
     }
 
     @Override

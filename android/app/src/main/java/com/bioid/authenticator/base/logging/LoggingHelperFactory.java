@@ -2,8 +2,7 @@ package com.bioid.authenticator.base.logging;
 
 import androidx.annotation.NonNull;
 
-import com.example.flutter_app_bioid_integration.BuildConfig;
-
+import com.bioid.authenticator.BuildConfig;
 
 /**
  * Factory to obtain {@link LoggingHelper} instances.

@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bioid.authenticator.R;
 import com.bioid.authenticator.base.network.bioid.webservice.token.VerificationTokenProvider;
 import com.bioid.authenticator.facialrecognition.FacialRecognitionFragment;
-import com.example.flutter_app_bioid_integration.R;
 
 /**
  * The VerificationActivity is the entry point of the user verification process.

@@ -9,9 +9,9 @@ import androidx.core.content.ContextCompat;
 
 import android.view.MotionEvent;
 
+import com.bioid.authenticator.R;
 import com.bioid.authenticator.base.logging.LoggingHelper;
 import com.bioid.authenticator.base.logging.LoggingHelperFactory;
-import com.example.flutter_app_bioid_integration.R;
 
 import org.rajawali3d.Object3D;
 import org.rajawali3d.animation.Animation3D;
