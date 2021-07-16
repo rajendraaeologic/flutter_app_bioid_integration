@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_bioid_integration/bio_id.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,10 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(child: const Text("Verify"),
-              onPressed: () { },
+              onPressed: () { BioId.verify(); },
             ),
             ElevatedButton(child: const Text("Enroll"),
-              onPressed: () { },
+              onPressed: () { BioId.enroll(); },
             )
           ],
         ),

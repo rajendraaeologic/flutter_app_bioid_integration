@@ -15,7 +15,7 @@
         android:label="flutter_app_bioid_integration"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name="."
+            android:name=".main.MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -49,8 +49,10 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
-       <activity android:name=".facialrecognition.verification.VerificationActivity"/>
-       <activity android:name=".facialrecognition.enrollment.EnrollmentActivity"/>
+       <activity android:name=".facialrecognition.verification.VerificationActivity"
+           android:theme="@style/AppTheme"/>
+       <activity android:name=".facialrecognition.enrollment.EnrollmentActivity"
+           android:theme="@style/AppTheme"/>
 
 
    </application>

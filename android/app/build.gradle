@@ -58,7 +58,7 @@ android {
     flavorDimensions 'identity_provider'
 
     productFlavors {
-        development {
+        bws {
             dimension 'identity_provider'
             applicationIdSuffix '.bws'  // making it possible to have both the connect and bws flavor installed in parallel
 
