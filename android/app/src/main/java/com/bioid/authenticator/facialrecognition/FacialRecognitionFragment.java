@@ -239,7 +239,7 @@ public final class FacialRecognitionFragment extends Fragment implements FacialR
 
     @Override
     public void showMovementIndicator(@NonNull final MovementDirection direction) {
-        binding.headOverlay.show();
+       // binding.headOverlay.show();
 
         switch (direction) {
             case any:
@@ -280,7 +280,7 @@ public final class FacialRecognitionFragment extends Fragment implements FacialR
 
     @Override
     public void resetMovementIndicator() {
-        binding.headOverlay.show();
+        //binding.headOverlay.show();
         binding.headOverlay.lookInto(Direction.AHEAD);
     }
 

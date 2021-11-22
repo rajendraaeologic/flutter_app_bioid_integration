@@ -35,7 +35,7 @@
     <string name="enrollment_waiting">Training…</string>
     <string name="enrollment_success">Successful Enrollment</string>
     <string name="enrollment_process_explanation_title">Easy as a selfie</string>
-    <string name="enrollment_process_explanation_message">Enrollment is how BioID learns to recognize you. Four sets of pictures will be taken. Hold device at eye level and follow instructions.</string>
+    <string name="enrollment_process_explanation_message">Enrollment is how BioID learns to recognize you. Eight sets of pictures will be taken. Hold device at eye level and follow instructions.</string>
     <string name="enrollment_process_turn90degrees_title">Please turn</string>
-    <string name="enrollment_process_turn90degrees_message">Turn yourself 90 degrees to your right to achieve different lighting conditions.</string>
+    <string name="enrollment_process_turn90degrees_message">Turn yourself 90 degrees to your right, left, up and down to achieve different lighting conditions.</string>
 </resources>

@@ -90,10 +90,11 @@ public class BioIdWebserviceClientExtended extends BioIdWebserviceClient {
     @VisibleForTesting
     protected HttpRequest createNewTokenRequest(@NonNull String bcid, @NonNull String task) {
         try {
-            Map<String, String> queryParameters = new ArrayMap<>(3);
+            Map<String, String> queryParameters = new ArrayMap<>(4);
             queryParameters.put("id", BuildConfig.BIOID_APP_ID);
             queryParameters.put("bcid", bcid);
             queryParameters.put("task", task);
+            queryParameters.put("livedetection", "false");
 
             return withDefaultTimeout(
                     HttpRequest.get(BWS_BASE_URL + "/extension/token", queryParameters, true)

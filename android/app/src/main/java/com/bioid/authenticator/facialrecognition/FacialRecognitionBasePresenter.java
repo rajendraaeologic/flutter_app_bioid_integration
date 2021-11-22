@@ -286,12 +286,12 @@ public abstract class FacialRecognitionBasePresenter<T extends BwsToken> impleme
         backgroundHandler.runOnBackgroundThread(
                 () -> motionDetection.detect(img),
                 motionDetected -> {
-                    if (motionDetected) {
+                   // if (motionDetected) {
                         onImageWithMotionCaptured(img);
-                    } else {
+                   // } else {
                         // again waiting for next potential image with motion
-                        imageDetectionState = ImageDetectionState.WAITING_FOR_IMAGE_WITH_MOTION;
-                    }
+                       // imageDetectionState = ImageDetectionState.WAITING_FOR_IMAGE_WITH_MOTION;
+                   // }
                 }, e -> {
                     throw e;  // should lead to app crash
                 }, null);

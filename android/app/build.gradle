@@ -50,8 +50,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -60,7 +59,6 @@ android {
     productFlavors {
         bws {
             dimension 'identity_provider'
-            applicationIdSuffix '.bws'  // making it possible to have both the connect and bws flavor installed in parallel
 
             // adding BWS settings from local gradle.properties
             buildConfigField 'String', 'BIOID_BWS_INSTANCE_NAME', BioIdBwsInstanceName
